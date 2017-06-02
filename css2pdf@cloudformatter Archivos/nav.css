@@ -1,0 +1,71 @@
+@media not-used {
+.nav{
+position: fixed;
+top: 0px;
+width: 100%;
+clear: both;
+float: left;
+list-style: none;
+padding: 0px 0px 0px 0px;
+margin-top: 0px;
+border-bottom:1px solid #333333; /* Remove to create tab effect*/
+background-color: white;
+}
+.navitem {
+display: inline;
+list-style: none;
+}
+
+.navitem > a {
+margin-right:10px;
+color: #FFFFFF;
+display: block;
+float:left;
+font: 14px/100% Arial, Helvetica, sans-serif;
+line-height: 32px;
+text-decoration: none;
+vertical-align: middle;
+padding: 0 10px;
+background-image:url('/Resources/images/nav-tab-bg.png');
+background-color:#000000; /*A basic background color is set incase the image will not load*/
+border:1px solid #333333;
+border-bottom:none;
+}
+.navitem > a:hover {
+    color:red;
+}
+    
+}
+
+.side-nav ul {
+	border-left: 0;
+	border-right: 1px solid #e7e7e7;
+	margin: 0;
+	-webkit-border-image: -webkit-linear-gradient(#ffffff, #e7e7e7 15%, #e7e7e7 85%, #ffffff);
+	border-image: linear-gradient(#ffffff, #e7e7e7 15%, #e7e7e7 85%, #ffffff);
+	box-shadow: inset 15px 0 5px -16px #e7e7e7;
+	background-image: -webkit-radial-gradient(right, #f2f2f2, #ffffff 80%);
+	background-image: radial-gradient(right, #f2f2f2, #ffffff 80%);
+}
+
+.side-nav li.content-group {
+	font: 20px/18px;
+	font-weight: bold;
+	background-image: -webkit-linear-gradient(left, #efefef, #f3f3f3);
+	background-image: linear-gradient(to right, #efefef, #f3f3f3);
+	margin-left: 0;
+	margin-right: 0;
+	padding: 12px 10px;
+	text-shadow: 0 1px 0 #ffffff;
+}
+@media (max-width: 991px) {
+.side-nav ul { width:180px }
+}
+@media (max-width: 767px) {
+.side-nav ul { 
+    width:100%; 
+    position:static; }
+}
+.side-nav .nav > li > a {
+padding:1px 15px;
+}
