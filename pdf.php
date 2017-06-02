@@ -1,21 +1,38 @@
 <?php
+
+    include 'CreadorPDF.php';
+    
     $nombrePDF = "mipdf.pdf";
+    
     if(isset($_POST['head']) && isset( $_POST['div'])){
         if(!empty($_POST['head'] && !empty($_POST['div']))){
 
+            $nomPag = "paginaTmp.html";
+            $nombrePDF = "mipdf.pdf";
             $div = $_POST['div'];
             $head = $_POST['head'];
-            $nomPag = "paginaTmp.html";
-            
             $pathWK = "C:\Program Files\wkhtmltopdf\bin";
             $tamPagina = "Letter";
             $urlOrigen = "http://localhost/pruebawk/".$nomPag;
             $urlDestino = 'C:\\xampp3\\htdocs\\pruebawk\\';
-            $nombrePDF = "mipdf.pdf";
             $delay = "4000";
+           
             
-            crearPaginaTmp($nomPag, $head, $div);
-            crearPDF($pathWK, $tamPagina, $urlOrigen, $urlDestino, $nombrePDF, $delay);
+            $creadorPDF = new CreadorPDF($head, $div);
+            $creadorPDF->setPathWK($pathWK);
+            $creadorPDF->setTamPag($tamPagina);
+            $creadorPDF->setUrlOrigen($urlOrigen);
+            $creadorPDF->setUrlDestino($urlDestino);
+            $creadorPDF->setNomPDF($nombrePDF);
+            //Opcional
+            //$creadorPDF->setDelay($delay);
+            $creadorPDF->setNomPag($nomPag);
+            
+            $creadorPDF->crearPDF();
+            //crearPaginaTmp($nomPag, $head, $div);
+            //crearPDF($pathWK, $tamPagina, $urlOrigen, $urlDestino, $nombrePDF, $delay);
+            
+           
         }
         else{
             //El head o el div de la pagina estan vacios
@@ -28,7 +45,7 @@
         header("Content-type: application/octet-stream");
         readfile($file);
     }
-    
+    /*
     function crearPaginaTmp($nomPag,$head, $div){
         $myfile = fopen($nomPag, "w") or die("Unable to open file!");
         $txt = "<html><head>";
@@ -55,4 +72,4 @@
         $comando .= ' '.$urlOrigen.' '.$urlDestino.$nombrePDF;
         echo $comando;
         shell_exec($comando);
-    }
+    }*/
